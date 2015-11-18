@@ -1,0 +1,64 @@
+﻿#pageTitle {
+    font-family: Ravie;
+    text-align: center;
+}
+#addNewEventBtn {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff0000;
+}
+.brainstorming .ui-collapsible-heading > .ui-btn-d {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff0000;
+}
+.redBtn {
+    color: #ffffff;
+    background-color: #ff0000;
+}
+.logistics .ui-collapsible-heading > .ui-btn-e {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff6a00;
+}
+.orangeBtn {
+    color: #ffffff;
+    background-color: #ff6a00;
+}
+.hRFinalApproval .ui-collapsible-heading > .ui-btn-f {
+    font-weight: bold;
+    color: #000000;
+    background-color: #fffa00;
+}
+.yellowBtn {
+    background-color: #fffa00;
+}
+.preparation .ui-collapsible-heading > .ui-btn-g {
+    font-weight: bold;
+    color: #000000;
+    background-color: #4cff00;
+}
+.greenBtn {
+    background-color: #4cff00;
+}
+.publicizing .ui-collapsible-heading > .ui-btn-h {
+    font-weight: bold;
+    color: #000000;
+    background-color: #4cff00;
+}
+.blueBtn {
+    background-color: #00ffff;
+}
+.execution .ui-collapsible-heading > .ui-btn-i {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #b200ff;
+}
+.purpleBtn {
+    color: #ffffff;
+    background-color: #b200ff;
+}
+.blackBtn {
+    color: #ffffff;
+    background-color: #000000;
+}
