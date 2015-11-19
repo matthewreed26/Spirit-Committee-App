@@ -11,15 +11,17 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
-    <h1 id="pageTitle">Ventera Spirit Committee</h1>
-
-    <div data-role="main" class="ui-content">
-        <div data-role="collapsibleset" id="eventList">
+    <div data-role="page" id="index">
+        <div data-role="header">
+            <h1>Ventera Spirit Committee</h1>
         </div>
+        <div data-role="main" class="ui-content">
+            <div data-role="collapsibleset" id="eventList">
+            </div>
+        </div>
+        <input type="text" id="eventInputName" />
+        <button id="addNewEventBtn" class="brainstorming">Create New Event</button>
     </div>
-
-    <input type="text" id="eventInputName" />
-    <button id="addNewEventBtn" class="brainstorming">Create New Event</button>
 
     <!-- Cordova reference, this is added to your app when it's built. -->
     <script src="cordova.js"></script>

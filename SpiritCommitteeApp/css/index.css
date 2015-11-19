@@ -1,6 +1,8 @@
-﻿#pageTitle {
+﻿.ui-header .ui-title {
     font-family: Ravie;
-    text-align: center;
+    overflow: visible;
+    white-space: normal;
+    font-size: larger;
 }
 #addNewEventBtn {
     font-weight: bold;
@@ -44,7 +46,7 @@
 .publicizing .ui-collapsible-heading > .ui-btn-h {
     font-weight: bold;
     color: #000000;
-    background-color: #4cff00;
+    background-color: #00ffff;
 }
 .blueBtn {
     background-color: #00ffff;
