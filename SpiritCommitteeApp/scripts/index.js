@@ -34,13 +34,13 @@
     function progressEventForward() {
         statusID++;
         removeEvent();
-        addEvent(createEvent);
+        addEvent(createEventHTML);
     };
 
     function progressEventBack() {
         statusID--;
         removeEvent();
-        addEvent(createEvent);
+        addEvent(createEventHTML);
     };
 
     function addEvent(content) {
@@ -59,7 +59,7 @@
         comments = comments + $("#inputCommentsEvent" + eventID).val();
         $("#inputCommentsEvent" + eventID).val("");
         removeEvent();
-        addEvent(createEvent);
+        addEvent(createEventHTML);
     };
 
     function removeEvent() {
