@@ -13,10 +13,8 @@
     var endDate = new Date();
     var eventName = "";
     var comments = "";
-    var statusName = new Array("Future", "Brainstorming", "Logistics", "HR Final Approval", "Preparation", "Publicizing", "Execution", "Completion");
-    var statusCode = new Array("future", "brainstorming", "logistics", "hRFinalApproval", "preparation", "publicizing", "execution", "completion");
-    var statusColor = new Array("gray", "red", "orange", "yellow", "green", "blue", "purple", "black");
-    var statusColorTheme = new Array("c", "d", "e", "f", "g", "h", "i", "b");
+
+    var statusRefValueList = new StatusReferenceValueList();
 
 
     function onDeviceReady() {
@@ -45,11 +43,11 @@
 
     function addEvent(content) {
         $("#eventList").append(content).collapsibleset('refresh');
-        document.getElementById(statusCode[statusID] + "Event" + eventID).onclick = saveComments;
+        document.getElementById(statusRefValueList.statusReferenceVOs[statusID].statusCode + "Event" + eventID).onclick = saveComments;
         if (statusID < 7) {
-            document.getElementById(statusCode[statusID + 1] + "Event" + eventID).onclick = progressEventForward;
+            document.getElementById(statusRefValueList.statusReferenceVOs[statusID + 1].statusCode + "Event" + eventID).onclick = progressEventForward;
             if (statusID == 1 || statusID == 3) {
-                document.getElementById(statusCode[statusID - 1] + "Event" + eventID).onclick = progressEventBack;
+                document.getElementById(statusRefValueList.statusReferenceVOs[statusID - 1].statusCode + "Event" + eventID).onclick = progressEventBack;
             }
         }
         $("#event" + eventID).collapsible("expand");
@@ -76,18 +74,18 @@
     };
 
     function createEventHTML() {
-        return "<div data-role='collapsible' class='" + statusCode[statusID] + "' id='event" + eventID + "' data-index='" + eventID + "'data-theme='" + statusColorTheme[statusID] + "'>"
+        return "<div data-role='collapsible' class='" + statusRefValueList.statusReferenceVOs[statusID].statusCode + "' id='event" + eventID + "' data-index='" + eventID + "'data-theme='" + statusRefValueList.statusReferenceVOs[statusID].statusColorTheme + "'>"
             + "<h3>" + eventName + "</h3>"
-            + "<p>Current Status: <font color='" + statusColor[statusID] + "'>" + statusName[statusID] + "</font>"
+            + "<p>Current Status: <font color='" + statusRefValueList.statusReferenceVOs[statusID].statusColor + "'>" + statusRefValueList.statusReferenceVOs[statusID].statusName + "</font>"
             + currentEventCommentsHTML()
             + moveStatusButtonsHTML() + "</p></div>"
     };
 
     function currentEventCommentsHTML() {
         var currentComments = "<br/><textarea id='inputCommentsEvent" + eventID + "'/><br/>"
-            + "<button id='" + statusCode[statusID] + "Event" + eventID + "'>Add Comments</button>";
+            + "<button id='" + statusRefValueList.statusReferenceVOs[statusID].statusCode + "Event" + eventID + "'>Add Comments</button>";
         if (comments != "") {
-            currentComments = "<br/>Current Comments: <br/>" + comments + currentComments;
+            currentComments = "<br/>Current Comments: <br/>" + comments + ", " + currentComments;
         }
         return currentComments;
     };
@@ -95,9 +93,9 @@
     function moveStatusButtonsHTML() {
         var buttonStr = "";
         if (statusID < 7) {
-            buttonStr = "<button id='" + statusCode[statusID + 1] + "Event" + eventID + "' class='" + statusColor[statusID + 1] + "Btn'>" + statusName[statusID + 1] + "</button>";
+            buttonStr = "<button id='" + statusRefValueList.statusReferenceVOs[statusID + 1].statusCode + "Event" + eventID + "' class='" + statusRefValueList.statusReferenceVOs[statusID + 1].statusColor + "Btn'>" + statusRefValueList.statusReferenceVOs[statusID + 1].statusName + "</button>";
             if (statusID == 1 || statusID == 3) {
-                buttonStr = "<button id='" + statusCode[statusID - 1] + "Event" + eventID + "' class='" + statusColor[statusID - 1] + "Btn'>" + statusName[statusID - 1] + "</button>&nbsp" + buttonStr;
+                buttonStr = "<button id='" + statusRefValueList.statusReferenceVOs[statusID - 1].statusCode + "Event" + eventID + "' class='" + statusRefValueList.statusReferenceVOs[statusID - 1].statusColor + "Btn'>" + statusRefValueList.statusReferenceVOs[statusID - 1].statusName + "</button>&nbsp" + buttonStr;
             }
             buttonStr = "<br/><br/>Move Status To: " + buttonStr;
         }
