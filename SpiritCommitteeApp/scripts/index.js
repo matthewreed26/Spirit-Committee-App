@@ -82,24 +82,31 @@
     };
 
     function currentEventCommentsHTML() {
-        var currentComments = "<br/><textarea id='inputCommentsEvent" + eventID + "'/><br/>"
-            + "<button id='" + statusRefValueList.statusReferenceVOs[statusID].statusCode + "Event" + eventID + "'>Add Comments</button>";
+        var currentComments = "<br/><textarea id='inputCommentsEvent" + eventID + "'/><br/>" + makeButtonHTML(statusID, "Add Comments");
         if (comments != "") {
-            currentComments = "<br/>Current Comments: <br/>" + comments + ", " + currentComments;
+            currentComments = "<br/>Current Comments: <br/>" + comments + currentComments;
         }
         return currentComments;
     };
 
     function moveStatusButtonsHTML() {
         var buttonStr = "";
-        if (statusID < 7) {
-            buttonStr = "<button id='" + statusRefValueList.statusReferenceVOs[statusID + 1].statusCode + "Event" + eventID + "' class='" + statusRefValueList.statusReferenceVOs[statusID + 1].statusColor + "Btn'>" + statusRefValueList.statusReferenceVOs[statusID + 1].statusName + "</button>";
-            if (statusID == 1 || statusID == 3) {
-                buttonStr = "<button id='" + statusRefValueList.statusReferenceVOs[statusID - 1].statusCode + "Event" + eventID + "' class='" + statusRefValueList.statusReferenceVOs[statusID - 1].statusColor + "Btn'>" + statusRefValueList.statusReferenceVOs[statusID - 1].statusName + "</button>&nbsp" + buttonStr;
-            }
+        var previousStatusID = statusRefValueList.statusReferenceVOs[statusID].previousStatusID;
+        if (previousStatusID != undefined) {
+            buttonStr = makeButtonHTML(previousStatusID, statusRefValueList.statusReferenceVOs[previousStatusID].statusName);
+        }
+        var nextStatusID = statusRefValueList.statusReferenceVOs[statusID].nextStatusID;
+        if (nextStatusID != undefined) {
+            buttonStr = buttonStr + makeButtonHTML(nextStatusID, statusRefValueList.statusReferenceVOs[nextStatusID].statusName);
+        }
+        if (buttonStr != "") {
             buttonStr = "<br/><br/>Move Status To: " + buttonStr;
         }
         return buttonStr;
+    };
+
+    function makeButtonHTML(statusID, buttonText) {
+        return "<button id='" + statusRefValueList.statusReferenceVOs[statusID].statusCode + "Event" + eventID + "' class='" + statusRefValueList.statusReferenceVOs[statusID].statusColor + "Btn'>" + buttonText + "</button>"
     };
 
     function onPause() {
