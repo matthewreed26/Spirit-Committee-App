@@ -72,18 +72,18 @@
         statusID = 1;
         eventName = $("#eventInputName").val();
         $("#eventInputName").val("");
-        return createEvent();
+        return createEventHTML();
     };
 
-    function createEvent() {
+    function createEventHTML() {
         return "<div data-role='collapsible' class='" + statusCode[statusID] + "' id='event" + eventID + "' data-index='" + eventID + "'data-theme='" + statusColorTheme[statusID] + "'>"
             + "<h3>" + eventName + "</h3>"
             + "<p>Current Status: <font color='" + statusColor[statusID] + "'>" + statusName[statusID] + "</font>"
-            + currentEventComments()
-            + moveStatusButtons() + "</p></div>"
+            + currentEventCommentsHTML()
+            + moveStatusButtonsHTML() + "</p></div>"
     };
 
-    function currentEventComments() {
+    function currentEventCommentsHTML() {
         var currentComments = "<br/><textarea id='inputCommentsEvent" + eventID + "'/><br/>"
             + "<button id='" + statusCode[statusID] + "Event" + eventID + "'>Add Comments</button>";
         if (comments != "") {
@@ -92,7 +92,7 @@
         return currentComments;
     };
 
-    function moveStatusButtons() {
+    function moveStatusButtonsHTML() {
         var buttonStr = "";
         if (statusID < 7) {
             buttonStr = "<button id='" + statusCode[statusID + 1] + "Event" + eventID + "' class='" + statusColor[statusID + 1] + "Btn'>" + statusName[statusID + 1] + "</button>";
