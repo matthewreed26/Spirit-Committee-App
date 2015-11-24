@@ -131,7 +131,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
+    <Content Include="scripts\Comment.js" />
     <Content Include="scripts\Event.js" />
+    <Content Include="scripts\EventListItem.js" />
+    <Content Include="scripts\EventListModelFunctions.js" />
+    <Content Include="scripts\EventListViewFunctions.js" />
     <Content Include="scripts\EventStatus.js" />
     <Content Include="scripts\StatusReferenceValueList.js" />
     <Content Include="scripts\StatusReferenceValueObject.js" />
